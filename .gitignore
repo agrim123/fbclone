@@ -8,7 +8,7 @@ config/cloudinary.yml
 config/private_pub.yml
 config/initializers/secret_token.rb
 config/database.yml
-config/secrets.yml
+##config/secrets.yml
 
 /tmp
 /log/*.log
