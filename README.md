@@ -1,4 +1,4 @@
-## Connector Chat
+## Connector Chat (fbclone)
 
 A simple social networking app. I actually did it as a summer project so, and i have tried to eliminate all errors in the existing app ,still some errors may prevail (like some dropdown menus or notifications!!), i am trying to remove these errors.
 
@@ -25,5 +25,4 @@ If you did everything correctly and without errors then congrats you have your o
 
 Your ideas and any improvements in the current project are most welcome.
 
-## License
-MIT
+
