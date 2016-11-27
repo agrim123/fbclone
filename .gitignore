@@ -1,0 +1,18 @@
+## Environment normalization:
+/.bundle
+/vendor/bundle
+
+## Database secrets
+/db/seeds.rb
+config/cloudinary.yml
+config/private_pub.yml
+config/initializers/secret_token.rb
+config/database.yml
+config/secrets.yml
+
+/tmp
+/log/*.log
+public/assets/*
+public/uploads/*
+.env
+*.rbc

@@ -1,0 +1,124 @@
+<style type="text/css">
+  textarea:focus, input[type="text"]:focus,textarea[type="text"]:focus,   input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus,  input[type="color"]:focus, .uneditable-input:focus, .form-control:focus {  
+    border-color:  none;
+    box-shadow: none;
+    outline:  none;}
+  </style>
+  <%= form_for(@micropost, html: { multipart: true },id: 'micropost_form') do |f| %>
+  <div class="row">
+    <div class="col s12">
+      <div class="card hoverable">
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="row" style="border-bottom:1px solid #ECECEC;padding-bottom:10px">
+          <div class="col s12">
+            <span class="btn-warning btn-file">
+              <i class="fa fa-picture-o" aria-hidden="true"></i>
+              Upload a Picture
+              <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' ,:id => 'micropost_picture',:value=>"asda"%>
+            </span>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <div class="row">
+           <div class="col s2">
+             <% if @user.picture? %>
+             <%= image_tag @user.picture.url ,:style =>'width:100%'%>
+             <% else %>
+             <%= image_tag 'default-image.png' %>    
+             <% end %>
+           </div>
+           <div class="col s10 micropost_content">
+             <%= f.text_area :content, placeholder: "Compose new micropost..." ,:style =>'border:0;resize:none' %>
+           </div>
+         </div>
+
+         <%= f.hidden_field :onwall , value:@user.id %>
+       </div>
+       <div class="card-action row location" style="margin-bottom:0;padding:5px;display:none">
+         <div class="col s1 center-align valign-wrapper" style="background-color:#EE6E73;color:white;height:2em;">
+           At:
+         </div>
+         <div class="col s11">
+           <%= f.text_field :location ,:style => 'height:2em;margin-bottom:0'%>
+         </div>
+       </div>
+       <div class="card-action row with" style="margin-bottom:0;padding:5px;display:none">
+         <ul class="tags">
+           <li class="tagAdd taglist">  
+             <input type="text" id="search-field">
+           </li>
+         </ul>         
+         <%= f.hidden_field :tags ,:class=>'as'%>
+       </div>
+       <div class="card-action row">
+         <div class="col s4">
+           &nbsp;
+           <a href="#!" class="access" style="display:none">
+             <i class="small fa fa-user-plus" aria-hidden="true" style="color:gray;"></i>
+           </a>
+           <a href="#!" class="access" style="display:none">
+             <i class="small fa fa-smile-o" aria-hidden="true" style="color:gray;"></i>
+           </a>
+           <a href="#!" class="access" style="display:none">
+             <i class="small fa fa-map-marker" aria-hidden="true" style="color:gray;"></i>
+           </a>
+         </div>
+         <div class="col s3 offset-s2">
+          <%= f.select :visible ,options_for_microposts, :default => 'Friends' %>
+        </div>
+        <div class="col s2">
+          <%= f.submit "Post", class: "btn btn-primary",:id=>"micropost_form_submit" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#micropost_picture').bind('change', function() {
+      var size_in_megabytes = this.files[0].size/1024/1024;
+      if (size_in_megabytes > 5) {
+        alert('Maximum file size is 5MB. Please choose a smaller file.');
+      }
+    });
+    $(".micropost_content textarea").autogrow({vertical: true, horizontal: false,flickering:false});
+    $(".fa-map-marker").click(function(){
+      $(".location").toggle();
+    });
+    $(".fa-user-plus").click(function(){
+      $(".with").toggle();
+    });
+    $(".micropost_content").click(function(){
+      $(".access").show();
+    });
+  });
+</script>
+<style type="text/css">
+  .row{
+    margin-bottom: 0;
+  }
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid;
+    padding: 4px;
+    background-color: rgb(238, 110, 115);
+    color: white;
+  }
+
+  .btn-file input[type=file] {
+    position: absolute;
+    top: -8px;
+    max-width:142px;
+    font-size: 31px;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: pointer;
+    display: block;
+  }
+</style>

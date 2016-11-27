@@ -1,0 +1,8 @@
+<div class="row">
+<ul>
+<li><%= link_to '<i class="tiny material-icons perm_identity">perm_identity
+</i>'.html_safe+ " " +current_user.first_name + " " + current_user.last_name,current_user %>
+	</li>
+<li><%= link_to '<i class="tiny material-icons mode_edit">mode_edit</i> Edit Profile'.html_safe, edit_user_path(current_user) %></li>
+</ul>
+</div>

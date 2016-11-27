@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='<%= logged_in? ? current_user.id : "" %>' name='user-id'/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<title><%if logged_in?%><%= current_user.first_name%> : <%end%>Connector</title>
+	<%= stylesheet_link_tag    'application', media: 'all'%>
+	<%= stylesheet_link_tag    'font-awesome-icons', media: 'all'%>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+<%= notice %>
+	<%= render 'layouts/header' %>
+	<%= yield %>
+<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
+
+</body>
+</html>

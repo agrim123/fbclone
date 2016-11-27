@@ -1,0 +1,56 @@
+ <% current_user.notifications.order('created_at DESC').limit(6).each do |notification| %>
+ <% if notification.read == false %>
+ <li style="background-color:#EE6E73;color:black !important">
+ 	<div class="row" style="margin-bottom:0">
+ 		<div class="col s2">
+ 			<% if notification.notified_by.picture? %>
+ 			<%= image_tag notification.notified_by.picture.url ,:style =>'width:100%'%>
+ 			<% else %>
+ 			<%= image_tag 'default-image.png' ,:style =>'width:100%'%>
+ 			<% end %>
+ 		</div>
+ 		<div class="col s9">
+ 			<div class="row" style="margin-bottom:0">
+ 				<% if notification.user_id == current_user.id && notification.identifier != nil%>
+ 				<%= link_to "#{notification.notified_by.first_name} has #{notification.notice_type}ed on your post", link_through_path(notification),:style => 'color:black;padding:0' %>
+ 				<% elsif notification.identifier == nil %>
+ 				<%= link_to "#{notification.notified_by.first_name} has #{notification.notice_type}", link_through_path(notification),:style => 'color:black;padding:0' %>
+ 				<% end %>
+ 			</div>
+ 			<div class="row" style="margin-bottom:0">
+ 				<%= time_ago_in_words(notification.created_at) %> ago.
+ 			</div>
+ 		</div>
+ 	</div>
+
+ </li>
+ <% else %>
+ <li style="color:black !important">
+ 	<div class="row" style="margin-bottom:0">
+ 		<div class="col s2">
+ 			<% if notification.notified_by.picture? %>
+ 			<%= image_tag notification.notified_by.picture.url ,:style =>'width:100%'%>
+ 			<% else %>
+ 			<%= image_tag 'default-image.png' %>
+ 			<% end %>
+ 		</div>
+ 		<div class="col s9">
+ 			<div class="row" style="margin-bottom:0">
+ 				<% if notification.identifier == nil %>
+ 				<%= link_to "#{notification.notified_by.first_name} has #{notification.notice_type}ed his status", link_through_path(notification) ,:style => 'color:black;padding:0'%>
+ 				<% else %>
+ 				<%= link_to "#{notification.notified_by.first_name} has #{notification.notice_type}ed on your post", link_through_path(notification) ,:style => 'color:black;padding:0'%>
+ 				<% end %>
+ 			</div>
+ 			<div class="row" style="margin-bottom:0">
+ 				<%= time_ago_in_words(notification.created_at) %> ago.
+ 			</div>
+ 		</div>
+ 	</div>
+
+ </li>
+ <% end %>
+ <% end %>
+ <li>
+ 	<%= link_to 'View All', notifications_path ,:class =>'center-align'%>
+ </li>

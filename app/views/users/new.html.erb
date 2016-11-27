@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col s6">
+        &nbsp;
+        <!-- image here -->
+    </div>
+    <div class="col s5">
+        <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <div class="row">
+            <div class="col s12" style="font-size: 24px;text-align: center;padding-top: 13px;">
+                Sign Up to Connector
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <%= f.label :first_name ,:for => 'first_name'%>
+                <%= f.text_field :first_name,:id => 'first_name', class: 'validate' %>
+            </div>
+            <div class="input-field col s6">
+                <%= f.label :last_name ,:for => 'last_name'%>
+                <%= f.text_field :last_name,:id => 'last_name', class: 'validate' %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.label :email ,:for => 'email'%>
+                <%= f.email_field :email,:id => 'email', class: 'validate' %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.label :mobile ,:for => 'mobile'%>
+                <%= f.text_field :mobile,:id => 'mobile', class: 'validate' %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.label :password ,:for => 'password'%>
+                <%= f.password_field :password,:id => 'password', class: 'validate' %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.label :password_confirmation ,:for => 'email'%>
+                <%= f.password_field :password_confirmation,:id => 'password_confirmation', class: 'validate' %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <%= f.submit "Join Connector", class: "btn btn-primary" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

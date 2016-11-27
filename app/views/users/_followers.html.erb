@@ -1,0 +1,11 @@
+<% @user.followers.each do |follower| %>
+<div class="col s4">
+	<% if follower.picture? %>
+	<%= link_to follower.picture.url ,follower,:style =>'width:100%'%>
+	<% else %>
+	<%= link_to image_tag('default-image.png'), follower %>		
+	<% end %>
+
+	<p><%= follower.first_name %></p>
+</div>
+<% end %>

@@ -1,0 +1,60 @@
+<ul>
+  <li>
+  </li>
+  <% if logged_in? %>
+  <li>
+    <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+    <%= submit_tag "Search" ,:style =>'display:none'%>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to current_user.first_name, current_user %>
+  </li>
+  <li style="color:black;">
+  <i class="fa fa-envelope-o"></i>Messages
+  </li>
+  <li>
+      <%= link_to '<i class="fa fa-bell"></i><sup>'.html_safe + ""+ current_user.notifications.where(read:false).count + "" +"</sup> Notifications".html_safe,notifications_path %>
+  </li>
+  <% if current_user.admin?%>
+  <li>
+    <%= link_to "Users", users_path %>
+  </li>
+  <% end %>
+  <li class="dropdown">
+   <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-beloworigin="true">
+     Account
+   </a>
+   <ul id='dropdown1' class='dropdown-content'>
+    <li>
+      <%= link_to "Profile", current_user %>
+    </li>
+    <li>
+      <%= link_to "Settings", edit_user_path(current_user) %>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <%= link_to "Log out", logout_path, method: "delete" %>
+    </li>
+  </ul>
+</a>
+</li>
+<% else %>
+<li>
+  <ul>
+   <%= form_for(:session, url: login_path) do |f| %>
+   <li>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </li>
+  <li>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </li>
+  <%= f.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
+</ul>
+</li>
+<% end %>
+</ul>

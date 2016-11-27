@@ -1,0 +1,24 @@
+<% @conversations.order('created_at DESC').limit(6).each do |conversation| %>
+<li>
+  <div class="row">
+    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+    <div class="col s1">
+      <% if conversation_interlocutor(conversation).picture? %>
+      <%= image_tag conversation_interlocutor(conversation).picture.url ,:style =>'width:100%'%>
+      <% else %>
+      <%= image_tag 'default-image.png' ,:style =>'width:100%'%>
+      <% end %>
+    </div>
+    <div class="s11">
+      <div class="row">
+        <%= conversation_interlocutor(conversation).first_name %>
+      </div>
+      <div class="row">
+        <p><% if !conversation.messages.last.nil? %>
+        <%= truncate(conversation.messages.last.body, length: 45) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>
+<% end %>
