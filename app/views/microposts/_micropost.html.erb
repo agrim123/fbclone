@@ -51,7 +51,7 @@
 			<div class="card-image" style="padding-left: 10px;padding-right: 10px;">
 				<%= image_tag micropost.picture.url if micropost.picture? %>
 			</div>
-			<% if micropost.get_likes.size >0 %>
+			<% if micropost.get_likes.size > 0 %>
 			<div class="card-action">
 				<%= display_likes micropost %>
 			</div>
