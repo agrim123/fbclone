@@ -5,6 +5,6 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "<%= ENV['PRIVATE_PUB_URL'] %>"
+  server: "https://connectorchatfaye.herokuapp.com/faye"
   secret_token: "<%= ENV['PRIVATE_PUB_SECRET_KEY'] %>"
   signature_expiration: 3600 # one hour
