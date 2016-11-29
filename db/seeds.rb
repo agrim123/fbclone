@@ -21,10 +21,12 @@ User.create!(first_name:  "Admin",last_name:  "Admin",
               mobile:121213)
 end
 users = User.all
+=begin
 5.times do
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.microposts.create!(content: content,visible:"Friends") }
 end
+=end
 
 # Following relationships
 users = User.all
