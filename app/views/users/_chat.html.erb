@@ -1,34 +1,27 @@
 
-<div style="overflow-y: auto;">
-	<div class="panel panel-default">
-		<!-- Default panel contents -->
-		<!-- Table -->
-		<div>
-			<% @users.each_with_index do |user, index| %>
+<div class="chatpanel">
 
-			<!--  <td><%= index +=1 %></td> -->
-			<div class="row" style="padding-top: 5px;padding-bottom: 0px;margin-bottom: 5px;">
-				<div class="col s3">
+	<% @users.each_with_index do |user, index| %>
+
+	<!--  <td><%= index +=1 %></td> -->
+			<div class="row chat_user_details">
+				<div class="col s2" style="padding: 0;">
 					<% if user.picture? %>
 					<%= link_to do %>
-					<%= image_tag @user.picture.url ,:style =>'width:100%'%>
+					<%= image_tag @user.picture.url ,:class => 'chat_user_image'%>
 					<% end %>
 					<% else %>
-					<%= image_tag 'default-image.png',:style =>'width:100%' %>		
+					<%= image_tag 'default-image.png',:class => 'chat_user_image' %>		
 					<% end %>
 				</div>
-				<div class="col s9">
-					<%= link_to truncate(user.first_name,:length=>20,:separator => ' ') , "#", class: "start-conversation",
+				<div class="col s8">
+				<%= link_to truncate(user.first_name,:length=>14,:separator => ' ') , "#", class: "start-conversation",
 					"data-sid" => current_user.id, "data-rip" => user.id %>
-					<% if session[:user_id => user.id] %>
-					y
-					<% end %>
 				</div>
-
+				<div class="col s2">
+					<%= image_tag 'header/online.png' %>
+				</div>
 			</div>
-
 			<% end %>
 		</div>
-	</div>
 
-</div>

@@ -27,6 +27,101 @@
  select{
  	display: block;
  }
+
+/*****profile*********/
+
+
+.profile button {
+	margin:12px 5px 0 5px;
+	padding:0;
+	height:32px;
+	width:100px;
+	color:#ffffff;
+	font-family:segoe ui;
+	font-size:15px;
+	font-weight:500;
+	background:#8899A6;
+	border:none;
+	border-radius:4px;
+	box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+}
+.profile .btn_follow {
+	background:#2A80BA;
+}
+.profile_menu {
+	width: Calc(100% - 5px);	
+	background:#ffffff;
+	border:none;
+	box-shadow:1px 1px 3px rgba(0,0,0,0.1);
+	border-radius:3px;
+	margin:6px auto 10px auto;
+	box-sizing: border-box;
+	padding:0 0;
+	overflow:hidden;
+}
+
+@media screen and (max-width:570px){
+	 .profile_menu {
+		width: Calc(100% - 30px);	
+	}
+}
+@media screen and (min-width:570px) and (max-width:964px){
+	 .profile_menu {
+		width: 460px;	
+	}
+
+}
+ .profile_menu button {
+	margin:0 5px 0 0;
+	padding:0 14px 0 44px;
+	height:48px;
+	width:auto;
+	color:#8899A6;
+	font-family:segoe ui;
+	font-size:16px;
+	font-weight:600;
+	background-color:#ffffff;
+	background-image:url('header/history-clock-button.png');
+	background-size:20px 20px;
+	background-repeat:no-repeat;
+	background-position:14px 14px;
+	border-bottom:4px solid #ffffff;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	border-radius:0px;
+    float:none;
+}
+ .profile_menu .about {
+    background-image:url('header/ellipsis.png');
+}
+ .profile_menu .posts {
+    background-image:url('header/create-new-pencil-button.png');
+}
+ .profile_menu .photos {
+    background-image:url('header/photo-library.png');
+}
+ .profile_menu .friends {
+    background-image:url('header/create-group-button.png');
+}
+ .profile_menu .following {
+    background-image:url('header/tick-inside-circle.png');
+}
+@media screen and (max-width:964px){
+	 .profile_menu button {
+		width:48px;
+		padding:0;
+		font-size:0;
+	}
+
+}
+ .profile_menu .active {
+	border-bottom:4px solid #2A80BA;
+	color:#2A80BA;
+	
+}
+
+/*** chat panel **/
  #chatbox{
  	height: 100vh;
  	overflow-y: auto;
@@ -38,9 +133,25 @@
  	color: black
  }
  #chatbox .row:hover{
- 	background-color: #a6a6a6;
- 	color:white;
+ 	
  }
 #chatbox .row:hover a{
-	color: white;
+	
+}
+.chatpanel {
+	padding-top: 15px;
+	box-sizing: border-box;
+	overflow:hidden;
+	z-index:9998;
+	transition-duration: 0.2s;
+
+}
+.chat_user_details{
+	min-height: 30px
+}
+.chat_user_details .col{
+	
+}
+.chat_user_image{
+	width: 100%;
 }

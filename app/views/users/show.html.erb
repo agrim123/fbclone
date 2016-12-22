@@ -1,6 +1,9 @@
 <%= javascript_include_tag 'users.js'%>
 <div class="container-fluid">
 	<div class="row">
+		<div class="col s2">
+			menu
+		</div>
 		<div class="col s8">
 			<div class="row">
 				<div class="col s12">
@@ -13,20 +16,46 @@
 						<% end %>
 					</div> -->
 				</div>
-				<div class="row">
-					<div class="col s7 offset-s3" style="margin-top:-15px">
-						<%= render 'users/user_profile_info' %>
-					</div>
-					<div class="col s2">
-						<%= render 'follow_form' %>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col s7 offset-s3" style="margin-top:-15px">
+					<%= render 'users/user_profile_info' %>
 				</div>
-				<div class="row">
-				
+				<div class="col s2">
+					<%= render 'follow_form' %>
 				</div>
 			</div>
+
+			<div class="row profile">
+				<div class="profile_menu">
+					<center>
+						<button class="active posts">Posts</button>
+						<button class="photos">Photos</button>
+						<button class="friends">Friends</button>
+						<button class="following">Following</button>
+						<button class="about">About</button>
+					</center>
+				</div>
+			</div>
+			
 			<div class="row" style="padding-top:20px">
-				<div class="col s4">
+				<div class="col s9">
+					<div id="test1">
+						<%= render 'shared/micropost_form' %>
+
+						<% if @user.microposts.any? %>
+						<%= render @microposts %>
+						<% end %>
+					</div>
+					<div id="test2">
+						<% if @user.following.any? %>
+						<%= render 'users/following' %>
+						<% else %>
+						No following
+						<% end %>
+					</div>
+				</div>
+				<!-- <div class="col s4">
 					<div class="row">
 
 						<ul class="tabs" style="overflow:hidden">
@@ -63,19 +92,8 @@
 						<% end %>
 					</div>
 
-				</div>
-				<div class="col s8">
-					<%= render 'shared/micropost_form' %>
-
-					<% if @user.microposts.any? %>
-					<%= render @microposts %>
-					<% end %>
-
-				</div>
+				</div> -->
 			</div>
-		</div>
-		<div class="col s2">
-			Notification
 		</div>
 		<div id="chatbox" class="col s2">
 			<%= render 'users/chat' %>
