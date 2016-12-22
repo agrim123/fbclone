@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'users.js'%>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col s2" style="padding: 0">
+		<div class="col s1" style="padding: 0">
 			menu
 		</div>
 		<div class="col s8" style="padding: 0">
@@ -15,40 +15,46 @@
 						<%= image_tag 'default-image.png' ,:style =>'  width: 55%;min-height:160px'%>		
 						<% end %>
 					</div> -->
-					<div class="profile">
-						<div class="sub_profile">
-							<center>
-							<%= image_tag 'default-image.png', :class=>'profile_pic'%><br/>
-								<h2>Rabii Kahlaoui</h2><br/>
-								<h3>@Rabii_kahlaoui</h3><br/>
-								<button class="btn_follow">Follow</button>
-								<button>Message</button>
-							</center>
+					<div class="blog_cover">
+
+					</div>
+					<div class="blog_info">
+						<left>
+							<% if @user.picture? %>
+							<%= image_tag @user.picture.url ,class: 'blog_pic'%>
+							<% else %>
+							<%= image_tag 'default-image.png' ,class: 'blog_pic'%>
+							<% end %>
+						</left>
+						<div class="blog_info_text">
+							<h2><%= @user.first_name %></h2><br/>
+							<h3>This is the description of this blog This is the description of this blog This is the description of this blog This is the description of this blog </h3><br/>
+							<a href="#">http://www.website.com</a><br/>
 						</div>
+						<div class="blog_menu_container">
+							<button class="blog_menu btn_follow">Follow</button>
+							<button class="blog_menu">Message</button>
+						</div>
+
+						<div class="blog_sub_menu">
+
+							<button class="active posts">Posts</button>
+							<button class="photos">Photos</button>
+							<button class="about">About</button>
+
+						</div>
+
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col s7 offset-s3" style="margin-top:-15px">
+				<!-- <div class="col s7 offset-s3" style="margin-top:-15px">
 					<%= render 'users/user_profile_info' %>
-				</div>
+				</div> -->
 				<div class="col s2">
 					<%= render 'follow_form' %>
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="profile_menu">
-					<center>
-						<button class="active posts">Posts</button>
-						<button class="photos">Photos</button>
-						<button class="friends">Friends</button>
-						<button class="following">Following</button>
-						<button class="about">About</button>
-					</center>
-				</div>
-			</div>
-			
 			<div class="row" style="padding-top:20px">
 				<div class="col s9">
 					<div id="test1">
