@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-
 //= require jquery_ujs
 //= require private_pub
 //= require jquery-ui
@@ -34,7 +33,7 @@ $(document).on('turbolinks:load', function(){
     }
     );
   $('.modal-trigger').leanModal();
-  
+
   // Show sideNav
   $('.button-collapse').click(function(){
     $(".side-nav").show();
