@@ -8,4 +8,4 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
- Rails.application.config.assets.precompile += %w( tag.js jquery-autogrow.js font-awesome-css.css font-awesome-icons.css users.js chat.css chat.js materialize.css materialize.js )
+ Rails.application.config.assets.precompile += %w( tag.js jquery-autogrow.js users.js chat.css chat.js )

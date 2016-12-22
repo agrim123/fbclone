@@ -19,7 +19,7 @@
  */
  
  body{
- 	background-color: #E9EBEE;
+ 	background-color: #F2F2F2;
  }
  .card{
  	padding: 10px 0px 0px 0px;
@@ -28,10 +28,11 @@
  	display: block;
  }
  #chatbox{
- 	max-height: 90.6vh;
- 	overflow-y: scroll;
+ 	height: 100vh;
+ 	overflow-y: auto;
  	position: fixed;
  	right: 0;
+ 	background:linear-gradient(to right, #CCCCCC , #E1E1E1  4px)
  }
  #chatbox .row a{
  	color: black
