@@ -30,7 +30,52 @@
 
 /*****profile*********/
 
-
+.profile {
+	background-image:url('back.jpg');
+	background-size:cover;
+	background-position:center center;
+	height:auto;
+	border:none;
+	box-sizing: border-box;
+	padding:0;
+	width: 100%;
+	box-shadow:1px 1px 3px rgba(0,0,0,0.3);
+	overflow:hidden;
+	
+}
+.profile .sub_profile {
+	height:auto;
+	width:100%;
+	padding:50px 0;
+	overflow:hidden;
+	line-height:25px;
+}
+.profile .profile_pic {
+	height:100px;
+	width:100px;
+	margin:0 0 12px 0;
+	padding:0;
+	border-radius:50%;
+	border:2px solid #ffffff;
+	box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+	
+}
+.profile h2 {
+	margin: 0;
+	display:inline-block;
+	font-size:17px;
+	font-weight:600;
+	color:#ffffff;
+	text-shadow:0 0 2px #000000;
+}
+.profile h3 {
+	margin: 0;
+	display:inline-block;
+	font-size:16px;
+	font-weight:500;
+	color:#ffffff;
+	text-shadow:0 0 2px #000000;
+}
 .profile button {
 	margin:12px 5px 0 5px;
 	padding:0;

@@ -1,20 +1,31 @@
 <%= javascript_include_tag 'users.js'%>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col s2">
+		<div class="col s2" style="padding: 0">
 			menu
 		</div>
-		<div class="col s8">
+		<div class="col s8" style="padding: 0">
 			<div class="row">
-				<div class="col s12">
-					<%= image_tag 'back.jpg' ,:style=>'height:300px;width:100%'%>
-					<!-- <div class="col s3" style="position: absolute;margin-top: -116px;">
+				<div class="col s12" style="padding: 0">
+					<!--<%= image_tag 'back.jpg' ,:style=>'height:300px;width:100%'%>
+					 <div class="col s3" style="position: absolute;margin-top: -116px;">
 						<% if @user.picture? %>
 						<%= image_tag @user.picture.url ,:style =>'  width: 55%;min-height:160px'%>
 						<% else %>
 						<%= image_tag 'default-image.png' ,:style =>'  width: 55%;min-height:160px'%>		
 						<% end %>
 					</div> -->
+					<div class="profile">
+						<div class="sub_profile">
+							<center>
+							<%= image_tag 'default-image.png', :class=>'profile_pic'%><br/>
+								<h2>Rabii Kahlaoui</h2><br/>
+								<h3>@Rabii_kahlaoui</h3><br/>
+								<button class="btn_follow">Follow</button>
+								<button>Message</button>
+							</center>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -26,7 +37,7 @@
 				</div>
 			</div>
 
-			<div class="row profile">
+			<div class="row">
 				<div class="profile_menu">
 					<center>
 						<button class="active posts">Posts</button>
