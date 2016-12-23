@@ -57,7 +57,8 @@ end
 
 def destroy
   @user = User.find(params[:id]).destroy
-  flash[:success] = "User deleted"
+   @conversations = Conversation.involving(current_user).order("created_at DESC")
+  #flash[:success] = "User deleted"
   redirect_to users_url
 end
 def following

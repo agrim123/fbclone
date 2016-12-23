@@ -20,32 +20,20 @@
           <% user_array.push(user.first_name+" "+user.last_name) %>
           <% end %>
         </li>
-       <!--  <li>
-          <div class="ui-widget">
-            <input id="tags" placeholder="Search Connector..">
-          </div>
-
-        </li> -->
         <li>
           <%= link_to current_user.first_name, current_user %>
         </li>
-       <!--  <li>
+        <li>
           <a class='dropdown-button' href='#' data-activates='dropdown12' data-beloworigin="true"><i class="fa fa-envelope-o"></i>
             <sup>
               <%= current_user.conversations.count %>
             </sup>
-          </i></a>
-
-           Dropdown Structure -->
-         <!--  <ul id='dropdown12' class='dropdown-content'>
+          </i></a> 
+          <ul id='dropdown12' class='dropdown-content'>
             <li>Messages</li>
-            <% if @conversations.any? && logged_in?%>
-            <%=render 'conversations/conversations' %>
-            <% else %>
-            <p>You have no conversations. Click send message with any user to create one.</p>
-            <% end %>
+           
           </ul>
-        </li> -->
+        </li> 
         <li>
           <a class='dropdown-button' href='#' data-activates='dropdown11'">
             <i class="fa fa-bell"></i>

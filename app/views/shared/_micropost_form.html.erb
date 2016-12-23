@@ -8,67 +8,55 @@
   <div class="row">
     <div class="col s12">
       <div class="card hoverable">
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="row" style="border-bottom:1px solid #ECECEC;padding-bottom:10px">
-          <div class="col s12">
-            <span class="btn-warning btn-file">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-              Upload a Picture
-              <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' ,:id => 'micropost_picture',:value=>"asda"%>
-            </span>
-          </div>
-        </div>
-        
-        <div class="card-content">
+        <%= render 'shared/error_messages', object: f.object %>        
+        <div class="card-content" style="padding:9px">
           <div class="row">
-           <div class="col s2">
-             <% if @user.picture? %>
-             <%= image_tag @user.picture.url ,:style =>'width:100%'%>
-             <% else %>
-             <%= image_tag 'default-image.png' %>    
-             <% end %>
-           </div>
-           <div class="col s10 micropost_content">
-             <%= f.text_area :content, placeholder: "Compose new micropost..." ,:style =>'border:0;resize:none' %>
+           <div class="col s12 micropost_content">
+             <%= f.text_area :content, placeholder: "Write Something..." ,:style =>'border:0;resize:none' %>
            </div>
          </div>
-
          <%= f.hidden_field :onwall , value:@user.id %>
        </div>
-       <div class="card-action row location" style="margin-bottom:0;padding:5px;display:none">
+       <!-- <div class="card-action row location" style="margin-bottom:0;padding:5px;display:none">
          <div class="col s1 center-align valign-wrapper" style="background-color:#EE6E73;color:white;height:2em;">
            At:
          </div>
          <div class="col s11">
            <%= f.text_field :location ,:style => 'height:2em;margin-bottom:0'%>
          </div>
-       </div>
-       <div class="card-action row with" style="margin-bottom:0;padding:5px;display:none">
+       </div> -->
+       <!-- <div class="card-action row with" style="margin-bottom:0;padding:5px;display:none">
          <ul class="tags">
            <li class="tagAdd taglist">  
              <input type="text" id="search-field">
            </li>
          </ul>         
          <%= f.hidden_field :tags ,:class=>'as'%>
-       </div>
-       <div class="card-action row">
-         <div class="col s4">
+       </div> -->
+       <div class="card-action row" style="    padding: 10px 0 10px 0;">
+         <!-- <div class="col s4">
            &nbsp;
-           <a href="#!" class="access" style="display:none">
+           <a class="access" style="display:none">
              <i class="small fa fa-user-plus" aria-hidden="true" style="color:gray;"></i>
            </a>
-           <a href="#!" class="access" style="display:none">
+           <a class="access" style="display:none">
              <i class="small fa fa-smile-o" aria-hidden="true" style="color:gray;"></i>
            </a>
-           <a href="#!" class="access" style="display:none">
+           <a class="access" style="display:none">
              <i class="small fa fa-map-marker" aria-hidden="true" style="color:gray;"></i>
            </a>
-         </div>
-         <div class="col s3 offset-s2">
+         </div> -->
+         <div class="col s1">
+            <div class="btn-file post_form_photo">
+              
+              <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' ,:id => 'micropost_picture',:value=>"upload_file"%>
+            </div>
+          </div>
+         <div class="col s3 offset-s7">
           <%= f.select :visible ,options_for_microposts, :default => 'Friends' %>
         </div>
-        <div class="col s2">
-          <%= f.submit "Post", class: "btn btn-primary",:id=>"micropost_form_submit" %>
+        <div class="col s1">
+          <%= f.submit "",:id=>"micropost_form_submit", class: "post_form_submit" %>
         </div>
       </div>
     </div>
@@ -105,7 +93,6 @@
     cursor: pointer;
     border: 1px solid;
     padding: 4px;
-    background-color: #2A80BA;
     color: white;
   }
 

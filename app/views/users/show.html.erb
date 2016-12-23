@@ -29,8 +29,8 @@
 							<a href="#">http://www.website.com</a><br/>
 						</div>
 						<div class="profile_menu_container">
-							<button class="profile_menu btn_follow">Follow</button>
-							<button class="profile_menu">Message</button>
+							<%= render 'follow_form' %>
+							<!-- <button class="profile_menu">Message</button> -->
 						</div>
 						<div class="profile_sub_menu">
 							<button class="posts active">Posts</button>
@@ -40,14 +40,6 @@
 							<button class="about">About</button>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<!-- <div class="col s7 offset-s3" style="margin-top:-15px">
-					<%= render 'users/user_profile_info' %>
-				</div> -->
-				<div class="col s2">
-					<%= render 'follow_form' %>
 				</div>
 			</div>
 			<div class="row" style="padding-top:20px">
@@ -79,44 +71,6 @@
 						About
 					</div>
 				</div>
-				<!-- <div class="col s4">
-					<div class="row">
-
-						<ul class="tabs" style="overflow:hidden">
-							<li class="tab">
-								<a href="#test1" class="active">
-									<strong id="followers" class="stat">
-										<%= @user.followers.count %>
-									</strong>
-									followers
-								</a>
-							</li>
-							<li class="tab">
-								<a href="#test2">
-									<strong id="following" class="stat">
-										<%= @user.following.count %>
-									</strong>
-									following
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div id="test1" class="col s12">
-						<% if @followers.any? %>
-						<%= render 'users/followers' %>
-						<% else %>
-						No Followers
-						<% end %>
-					</div>
-					<div id="test2" class="col s12">
-						<% if @user.following.any? %>
-						<%= render 'users/following' %>
-						<% else %>
-						No following
-						<% end %>
-					</div>
-
-				</div> -->
 			</div>
 		</div>
 		<div id="chatbox" class="col s2">

@@ -110,14 +110,6 @@ ActiveRecord::Schema.define(version: 20161203111416) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "updates", force: :cascade do |t|
-    t.text     "body"
-    t.text     "title"
-    t.text     "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"

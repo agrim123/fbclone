@@ -7,5 +7,6 @@ class NotificationsController < ApplicationController
 	def index
 		@conversations = Conversation.involving(current_user).order("created_at DESC")
 		@notifications = current_user.notifications
+		@users = User.all
 	end 
 end

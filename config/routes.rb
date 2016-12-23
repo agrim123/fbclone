@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'notifications/link_through'
 
   root 'static_pages#home'
-resources :updates
+
   
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
