@@ -31,7 +31,11 @@
           </i></a> 
           <ul id='dropdown12' class='dropdown-content'>
             <li>Messages</li>
-           
+           <% if @conversations.any? && logged_in?%>
+             <%=render 'conversations/conversations' %>
+             <% else %>
+            <p>You have no conversations. Click send message with any user to create one.</p>
+             <% end %>
           </ul>
         </li> 
         <li>

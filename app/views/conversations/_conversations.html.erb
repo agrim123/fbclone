@@ -14,8 +14,10 @@
         <%= conversation_interlocutor(conversation).first_name %>
       </div>
       <div class="row">
-        <p><% if !conversation.messages.last.nil? %>
-        <%= truncate(conversation.messages.last.body, length: 45) %></p>
+        <p>
+          <% if !conversation.messages.last.nil? %>
+          <%= truncate(conversation.messages.last.body, length: 45) %>
+        </p>
         <% end %>
       </div>
     </div>

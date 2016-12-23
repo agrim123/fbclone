@@ -17,7 +17,10 @@
  *= require_tree .
  *= require_self
  */
- 
+.turbolinks-progress-bar {
+  /*height: 5px;
+  background-color: green;*/
+}
  body{
  	background-color: #F2F2F2;
  }
