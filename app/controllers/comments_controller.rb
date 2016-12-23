@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 		@micropost = Micropost.find(params[:micropost_id])
 	end  
 	def create_notification(post,comment)  
-		return if post.id == current_user.id 
+		return if post.user.id == current_user.id 
 		Notification.create(user_id: post.user.id,
 			notified_by_id: current_user.id,
 			micropost_id: post.id,
