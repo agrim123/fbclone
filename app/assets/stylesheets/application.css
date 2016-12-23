@@ -29,7 +29,7 @@
  }
 
 /*****profile*********/
-.blog_cover {
+.profile_cover {
 	background-image:url('back.jpg');
 	background-size:cover;
 	background-position:center center;
@@ -41,7 +41,7 @@
 	box-shadow:1px 1px 3px rgba(0,0,0,0.3);
 	overflow:hidden;
 }
-.blog_info {
+.profile_info {
     width: Calc(100% - 5px);	
 	background:#ffffff;
 	border:none;
@@ -53,20 +53,20 @@
     line-height:23px;
     position:relative;
 }
-.blog_menu_container {
+.profile_menu_container {
     width:100%;
     padding:7px 0;
     text-align:center;
 }
-.blog_info_text {
+.profile_info_text {
     width:100%;
     padding:7px 0;
     text-align:center;
 }
-.blog_info left {
+.profile_info left {
     text-align:left;
 }
-.blog_info .blog_pic {
+.profile_info .profile_pic {
 	height:120px;
 	width: 120px;
 	margin:-60px 10px 0 0;
@@ -76,28 +76,28 @@
 	box-shadow:1px 1px 3px rgba(0,0,0,0.2);
     float:left;
 }
-.blog_info h2 {
+.profile_info h2 {
 	margin: 0;
 	display:inline-block;
 	font-size:17px;
 	font-weight:600;
 	color:#38424C;
 }
-.blog_info h3 {
+.profile_info h3 {
 	margin: 0;
 	display:inline-block;
 	font-size:15px;
 	font-weight:500;
 	color:darkgrey;
 }
-.blog_info a {
+.profile_info a {
 	display:inline-block;
 	font-size:15px;
 	font-weight:500;
 	color:dodgerblue;
     text-decoration:none;
 }
-.blog_info .blog_menu  {
+.profile_info .profile_menu  {
 	margin:0 0 0 10px;
 	padding:0 11px 0 39px;
 	height:36px;
@@ -114,7 +114,7 @@
 	border:1px solid #dadada;
     border-radius:3px;
 }
-.blog_info .blog_sub_menu button {
+.profile_info .profile_sub_menu button {
 	margin:10px 10px -10px 0;
 	padding:0 14px 0 44px;
 	height:48px;
@@ -135,12 +135,16 @@
 	border-radius:0px;
     float:none; 
 }
-.blog_info .blog_sub_menu .active {
+.profile_info .profile_sub_menu button:hover{
+	border-bottom:4px solid #2A80BA;
+	color:#2A80BA;
+}
+.profile_info .profile_sub_menu .active {
 	border-bottom:4px solid #2A80BA;
 	color:#2A80BA;
 }
 @media screen and (max-width:964px){
-	.blog_info .blog_sub_menu button {
+	.profile_info .profile_sub_menu button {
 		width:48px;
 		padding:0;
 		background-image:url('header/history-clock-button.png');
@@ -149,24 +153,25 @@
 		background-position:14px 14px;
 		font-size:0;
 	}
-    .blog_info .blog_menu  {
+    .profile_info .profile_menu  {
         float:none; 
         margin:10px 5px 0 5px;
     }
-    .blog_info .blog_pic {
+    .profile_info .profile_pic {
         float:none; 
         margin:-60px 0 10px 0;
         
     }
-    .blog_info {
+    .profile_info {
+    	text-align: center;
         width: 460px;
     }
-    .blog_info center {
+    .profile_info center {
         text-align:center;
     }
 }
 @media screen and (min-width:964px){
-    .blog_menu_container {
+    .profile_menu_container {
         width:auto;
         height:auto;
         position:absolute;
@@ -174,7 +179,7 @@
         top:10px;
         padding:0;
     }
-    .blog_info_text {
+    .profile_info_text {
         width:auto;
         height:auto;
         padding:0;
@@ -183,22 +188,31 @@
     }
 }
 @media screen and (max-width:570px){
-    .blog_info {
+    .profile_info {
         width: calc(100% - 30px);
     }
 }
 	
-
-.blog_info .blog_sub_menu .about {
+.profile_info .profile_sub_menu .friends {
+    background-image:url('header/create-group-button.png');
+}
+.profile_info .profile_sub_menu .following {
+    background-image:url('header/tick-inside-circle.png');
+}
+.profile_info .profile_sub_menu .about {
     background-image:url('header/ellipsis.png');
 }
-.blog_info .blog_sub_menu .posts {
+.profile_info .profile_sub_menu .posts {
     background-image:url('header/create-new-pencil-button.png');
 }
-.blog_info .blog_sub_menu .photos {
+.profile_info .profile_sub_menu .photos {
     background-image:url('header/photo-library.png');
 }
-/*** chat panel **/
+
+/************
+/******************************** chat panel *************************
+*************/
+
  #chatbox{
  	height: 100vh;
  	overflow-y: auto;

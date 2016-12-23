@@ -39,6 +39,53 @@ $(document).on('turbolinks:load', function(){
     $(".side-nav").show();
   });
   // Hide sideNav
-  
 
-});
+  /*****
+   PROFILE JS
+   ******/
+
+   $(".profile_photos,.profile_followers,.profile_following,.profile_about").hide();
+   $(".profile_sub_menu button").hover(function(){
+    $(this).toggleClass('active');
+  });
+   $(".profile_sub_menu button").click(function(){
+    
+    var str = $(this).attr('class');
+    if(str.indexOf("posts") != -1){
+      $(this).addClass('active');
+      $(".profile_posts").show();
+      $(".profile_photos").hide();
+      $(".profile_followers").hide();
+      $(".profile_following").hide();
+      $(".profile_about").hide();
+    }else if(str.indexOf("photos") != -1){
+      $(this).addClass('active');
+      $(".profile_posts").hide();
+      $(".profile_photos").show();
+      $(".profile_followers").hide();
+      $(".profile_following").hide();
+      $(".profile_about").hide();
+    }else if(str.indexOf("followers") != -1){
+      $(".profile_posts").hide();
+      $(".profile_photos").hide();
+      $(".profile_followers").show();
+      $(".profile_following").hide();
+      $(".profile_about").hide();
+    }else if(str.indexOf("following") != -1){
+      $(".profile_posts").hide();
+      $(".profile_photos").hide();
+      $(".profile_followers").hide();
+      $(".profile_following").show();
+      $(".profile_about").hide();
+    }else if(str.indexOf("about") != -1){
+      $(".profile_posts").hide();
+      $(".profile_photos").hide();
+      $(".profile_followers").hide();
+      $(".profile_following").hide();
+      $(".profile_about").show();
+    }else{
+      alert();
+    }
+  });
+
+ });

@@ -1,12 +1,9 @@
 <%= javascript_include_tag 'users.js'%>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col s1" style="padding: 0">
-			menu
-		</div>
-		<div class="col s8" style="padding: 0">
+		<div class="col s10" style="padding: 0">
 			<div class="row">
-				<div class="col s12" style="padding: 0">
+				<div class="col s12" style="    padding: 0px 10px 0px 10px;">
 					<!--<%= image_tag 'back.jpg' ,:style=>'height:300px;width:100%'%>
 					 <div class="col s3" style="position: absolute;margin-top: -116px;">
 						<% if @user.picture? %>
@@ -15,35 +12,33 @@
 						<%= image_tag 'default-image.png' ,:style =>'  width: 55%;min-height:160px'%>		
 						<% end %>
 					</div> -->
-					<div class="blog_cover">
+					<div class="profile_cover">
 
 					</div>
-					<div class="blog_info">
+					<div class="profile_info">
 						<left>
 							<% if @user.picture? %>
-							<%= image_tag @user.picture.url ,class: 'blog_pic'%>
+							<%= image_tag @user.picture.url ,class: 'profile_pic'%>
 							<% else %>
-							<%= image_tag 'default-image.png' ,class: 'blog_pic'%>
+							<%= image_tag 'default-image.png' ,class: 'profile_pic'%>
 							<% end %>
 						</left>
-						<div class="blog_info_text">
+						<div class="profile_info_text">
 							<h2><%= @user.first_name %></h2><br/>
-							<h3>This is the description of this blog This is the description of this blog This is the description of this blog This is the description of this blog </h3><br/>
+							<h3>This is the description of this profile This is the description of this profile This is the description of this profile This is the description of this profile </h3><br/>
 							<a href="#">http://www.website.com</a><br/>
 						</div>
-						<div class="blog_menu_container">
-							<button class="blog_menu btn_follow">Follow</button>
-							<button class="blog_menu">Message</button>
+						<div class="profile_menu_container">
+							<button class="profile_menu btn_follow">Follow</button>
+							<button class="profile_menu">Message</button>
 						</div>
-
-						<div class="blog_sub_menu">
-
-							<button class="active posts">Posts</button>
+						<div class="profile_sub_menu">
+							<button class="posts active">Posts</button>
 							<button class="photos">Photos</button>
+							<button class="followers">Followers</button>
+							<button class="following">Following</button>
 							<button class="about">About</button>
-
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -57,19 +52,31 @@
 			</div>
 			<div class="row" style="padding-top:20px">
 				<div class="col s9">
-					<div id="test1">
+					<div class="profile_posts">
 						<%= render 'shared/micropost_form' %>
-
 						<% if @user.microposts.any? %>
 						<%= render @microposts %>
 						<% end %>
 					</div>
-					<div id="test2">
+					<div class="profile_photos">
+						Photos
+					</div>
+					<div class="profile_followers">
+					<% if @followers.any? %>
+						<%= render 'users/followers' %>
+						<% else %>
+						No Followers
+						<% end %>
+					</div>
+					<div class="profile_following">
 						<% if @user.following.any? %>
 						<%= render 'users/following' %>
 						<% else %>
 						No following
 						<% end %>
+					</div>
+					<div class="profile_about">
+						About
 					</div>
 				</div>
 				<!-- <div class="col s4">
