@@ -1,3 +1,13 @@
 <% if @feed_items.any? %>
-    <%= render @feed_items %>
+
+<div id="ordered-ideas">
+	<%= render @feed_items %>
+</div>
+
+<div id="infinite-scrolling">
+	<%= will_paginate @feed_items %>
+</div>
+<button class="load-more btn">
+Load more
+</button>
 <% end %>

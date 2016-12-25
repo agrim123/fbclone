@@ -21,10 +21,10 @@ User.create!(first_name:  "Admin",last_name:  "Admin",
               mobile:121213)
 end
 users = User.all
-
-5.times do
+users = User.order(:created_at).take(6)
+20.times do
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content,visible:"Friends") }
+  users.each { |user| user.microposts.create!(content: content,visible:"Public") }
 end
 
 

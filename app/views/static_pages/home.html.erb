@@ -1,4 +1,10 @@
 <% if logged_in? %>
+<!-- a<script type="text/javascript">
+	$.get('/users/<%=@user.id%>.json',function(data,status){
+		console.log(data);
+	});
+</script> -->
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col s2">
@@ -13,7 +19,7 @@
 			<%= render 'shared/micropost_form' %>
 			<div class="row">
 				<div class="col s12">
-					<%= render 'shared/feed' %>
+					<%= render 'shared/feed' %>	
 				</div>
 			</div>
 

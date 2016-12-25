@@ -39,7 +39,10 @@ $(document).on('turbolinks:load', function(){
     $(".side-nav").show();
   });
   // Hide sideNav
-
+  $(".load-more").click(function(){
+    $('.pagination').html('Loading');
+    $.getScript($('.pagination .next_page').attr('href'));
+  });
   /*****
    PROFILE JS
    ******/

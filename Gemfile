@@ -28,6 +28,7 @@ gem 'faye-rails'
 gem 'bootstrap_form'
 gem 'acts-as-taggable-on'
 gem 'jquery-ui-rails'
+gem 'will_paginate'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

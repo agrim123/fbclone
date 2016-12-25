@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     else
       @users = User.all.order('first_name')
     end
+    respond_to do |format|  
+      format.html 
+      format.json { render json: @users, status: 200 }
+    end
   end
   def show
    @user = User.find(params[:id])
@@ -19,8 +23,12 @@ class UsersController < ApplicationController
    @users= User.all
    @conversations = Conversation.involving(current_user).order("created_at DESC")
    @user = User.find(params[:id])
-   @microposts = @user.microposts
+   @microposts = @user.microposts.paginate(page: params[:page], per_page: 6).order(created_at: :desc)
    @micropost = Micropost.new
+   respond_to do |format|  
+      format.html 
+      format.json { render json: @user, status: 200 }
+    end
  end
 
  def new
@@ -57,7 +65,7 @@ end
 
 def destroy
   @user = User.find(params[:id]).destroy
-   @conversations = Conversation.involving(current_user).order("created_at DESC")
+  @conversations = Conversation.involving(current_user).order("created_at DESC")
   #flash[:success] = "User deleted"
   redirect_to users_url
 end

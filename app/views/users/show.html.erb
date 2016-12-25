@@ -47,14 +47,20 @@
 					<div class="profile_posts">
 						<%= render 'shared/micropost_form' %>
 						<% if @user.microposts.any? %>
+						<div id="ordered-ideas">
 						<%= render @microposts %>
+						</div>
+
+						<div id="infinite-scrolling">
+						<%= will_paginate @microposts %>
+						</div>
 						<% end %>
 					</div>
 					<div class="profile_photos">
 						Photos
 					</div>
 					<div class="profile_followers">
-					<% if @followers.any? %>
+						<% if @followers.any? %>
 						<%= render 'users/followers' %>
 						<% else %>
 						No Followers
