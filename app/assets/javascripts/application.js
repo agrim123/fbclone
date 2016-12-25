@@ -40,8 +40,9 @@ $(document).on('turbolinks:load', function(){
   });
   // Hide sideNav
   $(".load-more").click(function(){
-    $('.pagination').html('Loading');
+    //$('#infinite-scrolling').html('Loading');
     $.getScript($('.pagination .next_page').attr('href'));
+
   });
   /*****
    PROFILE JS

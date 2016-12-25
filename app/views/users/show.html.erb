@@ -47,13 +47,15 @@
 					<div class="profile_posts">
 						<%= render 'shared/micropost_form' %>
 						<% if @user.microposts.any? %>
-						<div id="ordered-ideas">
-						<%= render @microposts %>
+						<div id="ordered-microposts">
+							<%= render @microposts %>
 						</div>
-
 						<div id="infinite-scrolling">
-						<%= will_paginate @microposts %>
+							<%= will_paginate @microposts %>
 						</div>
+						<button class="load-more btn">
+							Load more
+						</button>
 						<% end %>
 					</div>
 					<div class="profile_photos">
