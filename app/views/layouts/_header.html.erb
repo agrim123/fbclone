@@ -1,4 +1,3 @@
-
 <div class="navbar-fixed">
   <nav style="background-color: #2A80BA">
     <div class="nav-wrapper">
@@ -31,11 +30,11 @@
           </i></a> 
           <ul id='dropdown12' class='dropdown-content'>
             <li>Messages</li>
-           <% if @conversations.any? && logged_in?%>
-             <%=render 'conversations/conversations' %>
-             <% else %>
+            <% if @conversations.any? && logged_in?%>
+            <%=render 'conversations/conversations' %>
+            <% else %>
             <p>You have no conversations. Click send message with any user to create one.</p>
-             <% end %>
+            <% end %>
           </ul>
         </li> 
         <li>
@@ -68,7 +67,8 @@
             <%= link_to "Profile", current_user %>
           </li>
           <li>
-            <%= link_to "Settings", edit_user_path(current_user) %>
+            <%= link_to "Settings", '#update_profile',:class=>'update_profile' %>
+            
           </li>
           <li class="divider"></li>
           <li>
@@ -99,9 +99,33 @@
 </div>
 </nav>
 </div>
+<div id="update_profile" class="modal">
+  <div class="modal-content">
+    <h4>Update Profile</h4>
+    <p class="user_data"></p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+  </div>
+</div>
+<% if logged_in?%>
 <script type="text/javascript">
   $(function() {
+    /*$.get('/users/<%=@user.id%>/edit.json',function(data){
+        console.log(data);
+      });*/
     $(".button-collapse").sideNav();
+    $('.update_profile').leanModal();
+    $('.update_profile').click(function(){
+      $('.user_data').append('<%= form_for(@user) do |f| %><%= render 'shared/error_messages', object: f.object %>    <%= f.label :first_name %>    <%= f.text_field :first_name, class: 'form-control' %>    <%= f.label :last_name %>    <%= f.text_field :last_name, class: 'form-control' %>    <%= f.label :email %>    <%= f.email_field :email, class: 'form-control' %>    <%= f.label :mobile %>    <%= f.number_field :mobile, class: 'form-control' %>    <%= f.label :password %>    <%= f.password_field :password, class: 'form-control' %>    <%= f.label :password_confirmation, "Confirmation" %>    <%= f.password_field :password_confirmation, class: 'form-control' %>    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' ,id: 'user_picture'%>    <%= f.submit "Save changes", class: "btn btn-primary" %>    <% end %>')
+    });
+    /*** look into it***/
+    $('#user_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
     var availableTags = [];
     var ar = "<%= user_array %>";
     while(ar.search("&quot;")>0){
@@ -115,11 +139,12 @@
       source: availableTags
     });
     $("#tags").bind('keydown',function(e){
-       if(e.keyCode == 13) {
-          $.ajax({url:'/users/1'});
-       }
-    });
+     if(e.keyCode == 13) {
+      $.ajax({url:'/users/1'});
+    }
+  });
 
   });
 </script>
 
+<%end%>

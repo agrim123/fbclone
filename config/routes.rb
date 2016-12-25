@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       put "dislike", to: "microposts#dislike"
     end
   end 
+  
   resources :comments do
     member do
       put "like", to: "comments#like"

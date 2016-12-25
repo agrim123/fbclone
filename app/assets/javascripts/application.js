@@ -33,6 +33,7 @@ $(document).on('turbolinks:load', function(){
     }
     );
   $('.modal-trigger').leanModal();
+  
 
   // Show sideNav
   $('.button-collapse').click(function(){
@@ -41,9 +42,17 @@ $(document).on('turbolinks:load', function(){
   // Hide sideNav
   $(".load-more").click(function(){
     //$('#infinite-scrolling').html('Loading');
-    $.getScript($('.pagination .next_page').attr('href'));
-
+$.getScript($('.pagination .next_page').attr('href'));
   });
+/*  if($('#infinite-scrolling').size() > 0){
+    $(window).on('scroll',function(){
+      console.log($('#infinite-scrolling').size());
+      m = $('.pagination .next_page').attr('href');
+      if(m && $(window).scrollTop() > $(document).height() - $(window).height() - 60){
+        $.getScript($('.pagination .next_page').attr('href'));
+      }
+    });
+  }*/
   /*****
    PROFILE JS
    ******/

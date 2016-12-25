@@ -27,7 +27,7 @@ class UsersController < ApplicationController
    @microposts = @user.microposts.paginate(page: params[:page], per_page: 6).order(created_at: :desc)
    respond_to do |format|  
       format.html 
-      format.json { render json: @user, status: 200 }
+      format.json { render json: @user_get, status: 200 }
       format.js {render 'show',:layout => false  }
     end
  end
@@ -52,6 +52,10 @@ def edit
  @conversations = Conversation.involving(current_user).order("created_at DESC")
  @user = User.find(params[:id])
  @users = User.all
+ respond_to do |format|  
+      #format.html 
+      format.json { render json: @user, status: 200 }
+    end
 end
 
 def update
