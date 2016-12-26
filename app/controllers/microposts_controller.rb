@@ -11,7 +11,9 @@ class MicropostsController < ApplicationController
       else
         create_notification_otherwall @micropost
       end
-
+      #respond_to do |format|
+       # format.js 
+      #end
       #flash[:success] = "Micropost created!"
       redirect_to current_user
     else

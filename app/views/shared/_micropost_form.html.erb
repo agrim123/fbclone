@@ -4,7 +4,7 @@
     box-shadow: none;
     outline:  none;}
   </style>
-  <%= form_for(@micropost, html: { multipart: true },id: 'micropost_form') do |f| %>
+  <%= form_for(@micropost, html: { multipart: true },id: 'micropost_form',:remote=>true, authenticity_token: true) do |f| %>
   <div class="row">
     <div class="col s12">
       <div class="card hoverable">
