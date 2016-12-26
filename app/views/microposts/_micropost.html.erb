@@ -1,5 +1,5 @@
 <% if micropost.visible == "Public" || micropost.user.id == current_user.id%>
-<div class="post hoverable">
+<div class="post hoverable <%= micropost.id %>">
 	<div class="row">
 		<% if micropost.user.picture? %>
 		<%= image_tag micropost.user.picture.url ,:style =>'width:100%',class: 'profile_pic'%>
@@ -11,7 +11,7 @@
 		was with
 		<%= micropost.tags.split('x').to_sentence.html_safe %>
 		<% end %> 
-
+		
 		<% if micropost.location.present? %>
 		&nbsp;at <%= micropost.location.capitalize %>
 		<% end %>
@@ -46,7 +46,17 @@
 			<% end %>-->
 		</button>
 		<button class="button share right">12</button>
-		<button class="button comment right"><%= micropost.comments.count %></button>
+		<button id = "post_<%= micropost.id %>" class="button comment right comment-button">
+			<% if micropost.comments.find {|a| a['user_id']==current_user.id} %>
+			<!--<%= link_to "<i class='fa fa-comments' aria-hidden='true'></i>
+			".html_safe, '#!',:style => 'color:#2A80BA' %>-->
+			<i class='fa fa-comments' aria-hidden='true' style='color:#2A80BA'></i>
+			<% else%>
+			<i class='fa fa-comments' aria-hidden='true' style='color:#989898'></i>
+			<%end%>
+			<%= micropost.comments.count %>
+		</button>
+		
 	</div>
 	<hr/>
 	<div class="comments" id="comments_<%= micropost.id %>">

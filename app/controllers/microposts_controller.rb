@@ -63,6 +63,7 @@ class MicropostsController < ApplicationController
     @conversations = Conversation.involving(current_user).order("created_at DESC")
     @users = User.all
     @micropost = Micropost.find(params[:id])
+    @user = @micropost.user
   end
   def destroy
     @micropost.destroy

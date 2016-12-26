@@ -137,7 +137,7 @@ microposts
 }
 .post .comment {
 	padding:0 10px 0 34px;
-	background-image:url('header/comment.png');
+	/*background-image:url('header/comment.png');*/
 	background-size:16px 16px;
 	background-position:9px 10px;
 	background-repeat:no-repeat;

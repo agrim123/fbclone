@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
 	before_action :set_micropost
-
+	def index
+		@comments = @micropost.comments.to_json
+		respond_to do |format|
+			format.json {render json: @comments, status: 200 }
+		end
+	end
 	def create  
 		@comment = @micropost.comments.build(comment_params)
 		@comment.user_id = current_user.id

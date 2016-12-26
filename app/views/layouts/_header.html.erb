@@ -111,9 +111,6 @@
 <% if logged_in?%>
 <script type="text/javascript">
   $(function() {
-    /*$.get('/users/<%=@user.id%>/edit.json',function(data){
-        console.log(data);
-      });*/
     $(".button-collapse").sideNav();
     $('.update_profile').leanModal();
     $('.update_profile').click(function(){
