@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require private_pub
-//= require jquery-ui
+// require jquery-ui
 //= require materialize
 //= require select2
 //= require chat
@@ -52,13 +52,6 @@ $.getScript($('.pagination .next_page').attr('href'));
       }
     });
   }*/
-  $(".comment-button").one('click',function(){
-  var id = $(this).attr('id').slice(5);
-  $.get('/microposts/'+id+'/comments.json',function(data,status){
-    console.log(data);
-    $(".comments").html(JSON.stringify(status));
-  });
-}); 
   /*****
    PROFILE JS
    ******/
