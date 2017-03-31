@@ -1,25 +1,17 @@
 <% if logged_in? %>
-<!-- a<script type="text/javascript">
-	$.get('/users/<%=@user.id%>.json',function(data,status){
-		console.log(data);
-	});
-</script> -->
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col s2">
 			<%= render 'layouts/side_nav' %>
 		</div>
-		<div class="col s6">
+		<div class="col s6 m12">
 			<% flash.each do |message_type, message| %>
 			<div class="alert alert-<%= message_type %>"><%= message %></div>
 			<% end %>
-			<% end %>
-			<% if logged_in? %>
 			<%= render 'shared/micropost_form' %>
 			<div class="row">
 				<div class="col s12">
-				<div class="add-microposts"></div>
+					<div class="add-microposts"></div>
 					<%= render 'shared/feed' %>	
 				</div>
 			</div>
@@ -36,10 +28,7 @@
 			<% end %>
 			<% if logged_in? %>
 		</div>
-		<div class="col s2">
-		</div>
-		<div id="chatbox" class="col s2">
-			<%= render 'users/chat' %>
+		<div class="col s2 m12">
 		</div>
 	</div>
 </div>
