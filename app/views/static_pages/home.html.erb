@@ -4,7 +4,7 @@
 		<div class="col s2">
 			<%= render 'layouts/side_nav' %>
 		</div>
-		<div class="col s6 m12">
+		<div class="col s6">
 			<% flash.each do |message_type, message| %>
 			<div class="alert alert-<%= message_type %>"><%= message %></div>
 			<% end %>
@@ -28,7 +28,10 @@
 			<% end %>
 			<% if logged_in? %>
 		</div>
-		<div class="col s2 m12">
+		<div class="col s2">
+		</div>		
+		<div id="chatbox" class="col s2">		
+			<%= render 'users/chat' %>
 		</div>
 	</div>
 </div>
