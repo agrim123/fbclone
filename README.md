@@ -4,7 +4,7 @@ A simple social networking app. I actually did it as a summer project so, and i 
 
 ## Motivation
 
-I started web development a year ago. For practice I came up with this idea. It was a hard start with all new real time things and websockets.
+I started web development a year ago. For practice I came up with this idea. It was a hard start with all new real time things and websockets. But as it turned out rails is extremly powerful and simple. It gives so much flexibilty.
 
 ## Installation
 1) For dev
@@ -12,6 +12,7 @@ I started web development a year ago. For practice I came up with this idea. It 
 bundle install
 rake db:create
 rake db:migrate
+rails s
 ``` 
 2) For production
 
