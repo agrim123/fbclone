@@ -9,7 +9,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 else
   storage :file
 end
-   version :standard do
+  version :standard do
      process :resize_to_fill => [100, 150, :north]
    end
    # Crop to 275px, 206px

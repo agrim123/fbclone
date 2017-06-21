@@ -9,7 +9,6 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
-
     render json: { conversation_id: @conversation.id }
   end
 
@@ -21,6 +20,7 @@ class ConversationsController < ApplicationController
   end
 
   private
+
   def conversation_params
     params.permit(:sender_id, :recipient_id)
   end

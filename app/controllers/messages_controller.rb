@@ -7,7 +7,6 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
     @message.save!
     @path = conversation_path(@conversation)
-    
   end
 
   private

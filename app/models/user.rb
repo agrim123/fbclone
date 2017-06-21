@@ -1,11 +1,9 @@
 class User < ActiveRecord::Base
- # acts_as_tagger
- 
   acts_as_voter
   has_many :conversations, :foreign_key => :sender_id
   after_create :create_default_conversation
   has_many :comments, dependent: :destroy
-  has_many :notifications, dependent: :destroy  
+  has_many :notifications, dependent: :destroy
 
   has_many :microposts, dependent: :destroy
   has_many :active_relationships,  class_name:  "Relationship",
@@ -26,26 +24,30 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   mount_uploader :picture, PictureUploader
   validate  :picture_size
+
   def self.search(search)
-    where("first_name LIKE ?", "%#{search}%") 
+    where("first_name LIKE ?", "%#{search}%")
     where("last_name LIKE ?", "%#{search}%")
   end
+
   def feed
     following_ids = "SELECT followed_id FROM relationships
     WHERE  follower_id = :user_id"
     Micropost.where("user_id IN (#{following_ids})
      OR user_id = :user_id", user_id: id)
   end
+
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
     BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
-    # Follows a user.
-    def follow(other_user)
-      active_relationships.create(followed_id: other_user.id)
-    end
+
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
 
   # Unfollows a user.
   def unfollow(other_user)
@@ -56,16 +58,17 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
+
   def create_default_conversation
     Conversation.create(sender_id: 1, recipient_id: self.id) unless self.id == 1
-  end 
+  end
 
   private
 
-    # Validates the size of an uploaded picture.
-    def picture_size
-      if picture.size > 5.megabytes
-        errors.add(:picture, "should be less than 5MB")
-      end
+  # Validates the size of an uploaded picture.
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "should be less than 5MB")
     end
   end
+end

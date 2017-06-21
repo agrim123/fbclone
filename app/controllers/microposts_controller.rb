@@ -1,18 +1,18 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
-  
+
   def create
     @conversations = Conversation.involving(current_user).order("created_at DESC")
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      if @micropost.onwall == current_user.id 
+      if @micropost.onwall == current_user.id
         create_notification @micropost
       else
         create_notification_otherwall @micropost
       end
       #respond_to do |format|
-       # format.js 
+       # format.js
       #end
       #flash[:success] = "Micropost created!"
       redirect_to current_user
@@ -80,9 +80,9 @@ class MicropostsController < ApplicationController
   def correct_user
     @micropost = current_user.microposts.find_by(id: params[:id])
     redirect_to root_url if @micropost.nil?
-  end 
-  def create_notification(post)  
-    return if post.id == current_user.id 
+  end
+  def create_notification(post)
+    return if post.id == current_user.id
     followers = current_user.followers.ids
     followers.each do |follower|
       Notification.create(user_id: follower,
@@ -91,9 +91,9 @@ class MicropostsController < ApplicationController
         identifier: nil,
         notice_type: 'updated his status')
     end
-  end 
-  def create_notification_otherwall(post)  
-    return if post.id == current_user.id 
+  end
+  def create_notification_otherwall(post)
+    return if post.id == current_user.id
     followers = current_user.followers.ids
     followers.each do |follower|
       Notification.create(user_id: follower,
@@ -102,5 +102,5 @@ class MicropostsController < ApplicationController
         identifier: nil,
         notice_type: 'posted on your wall')
     end
-  end  
+  end
 end

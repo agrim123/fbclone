@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  
+
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -19,14 +19,14 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  resources :microposts do  
+  resources :microposts do
     resources :comments
     member do
       put "like", to: "microposts#like"
       put "dislike", to: "microposts#dislike"
     end
-  end 
-  
+  end
+
   resources :comments do
     member do
       put "like", to: "comments#like"
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
   get 'notifications/:id/link_through', to: 'notifications#link_through',
   as: :link_through
-  get 'notifications', to: 'notifications#index'  
+  get 'notifications', to: 'notifications#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
