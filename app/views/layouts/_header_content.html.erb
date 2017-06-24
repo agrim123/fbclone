@@ -12,10 +12,10 @@
     <%= link_to current_user.first_name, current_user %>
   </li>
   <li style="color:black;">
-  <i class="fa fa-envelope-o"></i>Messages
+    <i class="fa fa-envelope-o"></i>Messages
   </li>
   <li>
-      <%= link_to '<i class="fa fa-bell"></i><sup>'.html_safe + ""+ current_user.notifications.where(read:false).count + "" +"</sup> Notifications".html_safe,notifications_path %>
+    <%= link_to '<i class="fa fa-bell"></i><sup>'.html_safe + ""+ current_user.notifications.where(read:false).count + "" +"</sup> Notifications".html_safe,notifications_path %>
   </li>
   <% if current_user.admin?%>
   <li>

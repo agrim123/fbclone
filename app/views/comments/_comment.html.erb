@@ -1,25 +1,24 @@
 <div class="row <%=comment.id%>">
   <div class="col s2">
-   <% if comment.user.picture? %>
-   <%= image_tag comment.user.picture.url ,:style =>'width:100%',:class=>'profile_pic'%>
-   <% else %>
-   <%= image_tag 'default-image.png' ,:class=>'profile_pic'%>
-   <% end %>
- </div>
- <div class="col s9" style="word-wrap: break-word;">
-   <%= link_to comment.user.first_name , comment.user %>
-   <%= comment.id %>
-   
-   <%= comment.content %>
-   <p style="color: #826f6f;margin: 0">
-   <%= time_ago_in_words(comment.created_at) %> ago.
-   </p>
- </div>
- <div class="col s1">
-  <% if comment.user == current_user %>
-  <%= link_to micropost_comment_path(micropost, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
-  <i class="fa fa-times delete-comment"></i>
-  <% end %>
-  <% end %>
-</div>
+    <% if comment.user.picture? %>
+    <%= image_tag comment.user.picture.url ,:style =>'width:100%',:class=>'profile_pic'%>
+    <% else %>
+    <%= image_tag 'default-image.png' ,:class=>'profile_pic'%>
+    <% end %>
+  </div>
+  <div class="col s9" style="word-wrap: break-word;">
+    <%= link_to comment.user.first_name , comment.user %>
+    <%= comment.id %>
+    <%= comment.content %>
+    <p style="color: #826f6f;margin: 0">
+      <%= time_ago_in_words(comment.created_at) %> ago.
+    </p>
+  </div>
+  <div class="col s1">
+    <% if comment.user == current_user %>
+    <%= link_to micropost_comment_path(micropost, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+    <i class="fa fa-times delete-comment"></i>
+    <% end %>
+    <% end %>
+  </div>
 </div>

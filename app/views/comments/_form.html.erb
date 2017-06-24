@@ -1,9 +1,9 @@
 <%= form_for [@micropost, @micropost.comments.new] do |f| %>
 <% if current_user.picture? %>
-					<%= image_tag current_user.picture.url ,:style =>'width:100%'%>
-					<% else %>
-					<%= gravatar_for current_user %>
-					<% end %>
+<%= image_tag current_user.picture.url ,:style =>'width:100%'%>
+<% else %>
+<%= gravatar_for current_user %>
+<% end %>
 <%= f.text_field :content, placeholder: 'Add a comment...'%>
 <%= f.submit 'New Comment', class: 'comment-submit-button' %>
 <% end %>
