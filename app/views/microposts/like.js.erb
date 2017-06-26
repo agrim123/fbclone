@@ -1,3 +1,2 @@
 /*$("#like_<%= @post.id %>").removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');*/
 $("#likes_<%= @micropost.id %>").html("<%= j (render partial: 'microposts/likes', locals: { micropost: @micropost} ) %>");
-

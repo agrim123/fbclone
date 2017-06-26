@@ -1,89 +1,89 @@
 <% if micropost.visible == "Public" || micropost.user.id == current_user.id%>
 <div class="post hoverable">
-	<div class="row">
-		<% if micropost.user.picture? %>
-		<%= image_tag micropost.user.picture.url ,:style =>'width:100%',class: 'profile_pic'%>
-		<% else %>
-		<%= image_tag 'default-image.png' ,class: 'profile_pic'%>
-		<% end %>
-		<%= link_to micropost.user.first_name, micropost.user %> 
-		<% if micropost.tags.present? %>
-		was with
-		<%= micropost.tags.split('x').to_sentence.html_safe %>
-		<% end %> 
+  <div class="row">
+    <% if micropost.user.picture? %>
+    <%= image_tag micropost.user.picture.url ,:style =>'width:100%',class: 'profile_pic'%>
+    <% else %>
+    <%= image_tag 'default-image.png' ,class: 'profile_pic'%>
+    <% end %>
+    <%= link_to micropost.user.first_name, micropost.user %>
+    <% if micropost.tags.present? %>
+    was with
+    <%= micropost.tags.split('x').to_sentence.html_safe %>
+    <% end %>
 
-		<% if micropost.location.present? %>
-		&nbsp;at <%= micropost.location.capitalize %>
-		<% end %>
-		<timestamp>
-			<%= time_ago_in_words(micropost.created_at) %> ago.
-			<% if micropost.visible == 'Public' %>
-			<i class="fa fa-globe" aria-hidden="true"></i>
-			<% elsif micropost.visible == 'Only Me' %>
-			<i class="fa fa-lock" aria-hidden="true"></i>
-			<% elsif micropost.visible == 'Friends' %>
-			<i class="fa fa-users" aria-hidden="true"></i>
-			<% end %>
-		</timestamp>
-		<hr/>
-		<%= micropost.content.gsub(/\n/, '<br />').html_safe %> 
-		<%= image_tag micropost.picture.url,:class=>'post_image' if micropost.picture? %>
-		<hr/>
-		<button class="button like left">
-			<% if current_user.liked? micropost %>
-			<%= link_to "<i class='fa fa-heart' aria-hidden='true' style='color:#2A80BA'></i>
-			".html_safe, dislike_micropost_path(micropost), class: 'vote', method: :put, remote: true, data: { toggle_text: "<i class='fa fa-heart' aria-hidden='true' style='color:#989898'></i>".html_safe, toggle_href: like_micropost_path(micropost), id: micropost.id },:style=>'margin-right:0' %>
-			<% else %>
-			<%= link_to "<i class='fa fa-heart' aria-hidden='true' style='color:#989898'></i>".html_safe, like_micropost_path(micropost), class: 'vote', method: :put, remote: true, data: { toggle_text: "<i class='fa fa-heart' aria-hidden='true' style='color:#2A80BA'></i>".html_safe, toggle_href: dislike_micropost_path(micropost), id: micropost.id } ,:style=>'margin-right:0'%>
-			<% end %>
-			<span class="votes-count" data-id="<%= micropost.id %>">
-				<%= micropost.get_likes.size %>
-			</span>
-			<!--<% if micropost.get_likes.size > 0 %>
-			<div class="card-action">
-				<%= display_likes micropost %>
-			</div>
-			<% end %>-->
-		</button>
-		<button class="button share right">12</button>
-		<button class="button comment right">
-			<% if micropost.comments.find {|a| a['user_id']==current_user.id} %>
-			<!--<%= link_to "<i class='fa fa-comments' aria-hidden='true'></i>
-			".html_safe, '#!',:style => 'color:#2A80BA' %>-->
-			<i class='fa fa-comments' aria-hidden='true' style='color:#2A80BA'></i>
-			<% else%>
-			<i class='fa fa-comments' aria-hidden='true' style='color:#989898'></i>
-			<%end%>
-			<%= micropost.comments.count %>
-		</button>
-	</div>
-	<hr/>
-	<div class="comments" id="comments_<%= micropost.id %>">
-		<% if micropost.comments %>
-		<%= render micropost.comments, micropost: micropost %>
-		<% end %>
-	</div>
-		<div class="comment-form row">
-			<%= form_for [micropost, micropost.comments.build] , remote:true do |f| %>
-			<div class="col s2">
-				<% if current_user.picture? %>
-				<%= image_tag current_user.picture.url,:class=>'profile_pic'%>
-				<% else %>
-				<%= image_tag 'default-image.png',:class=>'profile_pic' %>
-				<% end %>
-			</div>
-			<div class="col s9">
-				<%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{micropost.id}" %>
-				<% end %>
-			</div>
+    <% if micropost.location.present? %>
+    &nbsp;at <%= micropost.location.capitalize %>
+    <% end %>
+    <timestamp>
+      <%= time_ago_in_words(micropost.created_at) %> ago.
+      <% if micropost.visible == 'Public' %>
+      <i class="fa fa-globe" aria-hidden="true"></i>
+      <% elsif micropost.visible == 'Only Me' %>
+      <i class="fa fa-lock" aria-hidden="true"></i>
+      <% elsif micropost.visible == 'Friends' %>
+      <i class="fa fa-users" aria-hidden="true"></i>
+      <% end %>
+    </timestamp>
+    <hr/>
+    <%= micropost.content.gsub(/\n/, '<br />').html_safe %>
+    <%= image_tag micropost.picture.url,:class=>'post_image' if micropost.picture? %>
+    <hr/>
+    <button class="button like left">
+      <% if current_user.liked? micropost %>
+      <%= link_to "<i class='fa fa-heart' aria-hidden='true' style='color:#2A80BA'></i>
+      ".html_safe, dislike_micropost_path(micropost), class: 'vote', method: :put, remote: true, data: { toggle_text: "<i class='fa fa-heart' aria-hidden='true' style='color:#989898'></i>".html_safe, toggle_href: like_micropost_path(micropost), id: micropost.id },:style=>'margin-right:0' %>
+      <% else %>
+      <%= link_to "<i class='fa fa-heart' aria-hidden='true' style='color:#989898'></i>".html_safe, like_micropost_path(micropost), class: 'vote', method: :put, remote: true, data: { toggle_text: "<i class='fa fa-heart' aria-hidden='true' style='color:#2A80BA'></i>".html_safe, toggle_href: dislike_micropost_path(micropost), id: micropost.id } ,:style=>'margin-right:0'%>
+      <% end %>
+      <span class="votes-count" data-id="<%= micropost.id %>">
+        <%= micropost.get_likes.size %>
+      </span>
+      <!--<% if micropost.get_likes.size > 0 %>
+      <div class="card-action">
+      <%= display_likes micropost %>
+      </div>
+      <% end %>-->
+    </button>
+    <button class="button share right">12</button>
+    <button class="button comment right">
+      <% if micropost.comments.find {|a| a['user_id']==current_user.id} %>
+      <!--<%= link_to "<i class='fa fa-comments' aria-hidden='true'></i>
+      ".html_safe, '#!',:style => 'color:#2A80BA' %>-->
+      <i class='fa fa-comments' aria-hidden='true' style='color:#2A80BA'></i>
+      <% else%>
+      <i class='fa fa-comments' aria-hidden='true' style='color:#989898'></i>
+      <%end%>
+      <%= micropost.comments.count %>
+    </button>
+  </div>
+  <hr/>
+  <div class="comments" id="comments_<%= micropost.id %>">
+    <% if micropost.comments %>
+    <%= render micropost.comments, micropost: micropost %>
+    <% end %>
+  </div>
+  <div class="comment-form row">
+   <%= form_for [micropost, micropost.comments.build] , remote:true do |f| %>
+   <div class="col s2">
+    <% if current_user.picture? %>
+    <%= image_tag current_user.picture.url,:class=>'profile_pic'%>
+    <% else %>
+    <%= image_tag 'default-image.png',:class=>'profile_pic' %>
+    <% end %>
+  </div>
+  <div class="col s9">
+    <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{micropost.id}" %>
+    <% end %>
+  </div>
 
-	</div>
+</div>
 </div>
 <% end %>
 <!-- <div class="col s2">
-	<% if current_user?(micropost.user) %>
-	<%= link_to "<i class='tiny material-icons'>mode_edit</i>".html_safe, edit_micropost_path(micropost) %>
-	<%= link_to "<i class='tiny material-icons'>delete</i>".html_safe, micropost, method: :delete,
-	data: { confirm: "You sure?" } %>
-	<% end %>
+  <% if current_user?(micropost.user) %>
+  <%= link_to "<i class='tiny material-icons'>mode_edit</i>".html_safe, edit_micropost_path(micropost) %>
+  <%= link_to "<i class='tiny material-icons'>delete</i>".html_safe, micropost, method: :delete,
+  data: { confirm: "You sure?" } %>
+  <% end %>
 </div> -->
