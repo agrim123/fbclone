@@ -1,22 +1,22 @@
 <style type="text/css">
-  textarea:focus, input[type="text"]:focus,textarea[type="text"]:focus,   input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus,  input[type="color"]:focus, .uneditable-input:focus, .form-control:focus {  
-    border-color:  none;
+  textarea:focus, input[type="text"]:focus,textarea[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus, .form-control:focus {
+    border-color: none;
     box-shadow: none;
-    outline:  none;}
+    outline: none;}
   </style>
   <%= form_for(@micropost, html: { multipart: true },id: 'micropost_form',:remote=>true, authenticity_token: true) do |f| %>
   <div class="row">
     <div class="col s12">
       <div class="card hoverable">
-        <%= render 'shared/error_messages', object: f.object %>        
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="card-content" style="padding:9px">
           <div class="row">
-           <div class="col s12 micropost_content">
-             <%= f.text_area :content, placeholder: "Write Something..." ,:style =>'border:0;resize:none' %>
-           </div>
-         </div>
-         <%= f.hidden_field :onwall , value:@user.id %>
-       </div>
+            <div class="col s12 micropost_content">
+              <%= f.text_area :content, placeholder: "Write Something..." ,:style =>'border:0;resize:none' %>
+            </div>
+          </div>
+          <%= f.hidden_field :onwall , value:@user.id %>
+        </div>
        <!-- <div class="card-action row location" style="margin-bottom:0;padding:5px;display:none">
          <div class="col s1 center-align valign-wrapper" style="background-color:#EE6E73;color:white;height:2em;">
            At:
@@ -27,15 +27,15 @@
        </div> -->
        <!-- <div class="card-action row with" style="margin-bottom:0;padding:5px;display:none">
          <ul class="tags">
-           <li class="tagAdd taglist">  
+           <li class="tagAdd taglist">
              <input type="text" id="search-field">
            </li>
-         </ul>         
+         </ul>
          <%= f.hidden_field :tags ,:class=>'as'%>
        </div> -->
-       <div class="card-action row" style="    padding: 10px 0 10px 0;">
+       <div class="card-action row" style="padding: 10px 0 10px 0;">
          <!-- <div class="col s4">
-           &nbsp;
+          &nbsp;
            <a class="access" style="display:none">
              <i class="small fa fa-user-plus" aria-hidden="true" style="color:gray;"></i>
            </a>
@@ -47,12 +47,12 @@
            </a>
          </div> -->
          <div class="col s1">
-            <div class="btn-file post_form_photo">
-              
-              <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' ,:id => 'micropost_picture',:value=>"upload_file"%>
-            </div>
+          <div class="btn-file post_form_photo">
+
+            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' ,:id => 'micropost_picture',:value=>"upload_file"%>
           </div>
-         <div class="col s3 offset-s7">
+        </div>
+        <div class="col s3 offset-s7">
           <%= f.select :visible ,options_for_microposts, :default => 'Friends' %>
         </div>
         <div class="col s1">

@@ -1,57 +1,56 @@
 <% if logged_in? %>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col s2">
-			<%= render 'layouts/side_nav' %>
-		</div>
-		<div class="col s6">
-			<% flash.each do |message_type, message| %>
-			<div class="alert alert-<%= message_type %>"><%= message %></div>
-			<% end %>
-			<%= render 'shared/micropost_form' %>
-			<div class="row">
-				<div class="col s12">
-					<div class="add-microposts"></div>
-					<%= render 'shared/feed' %>	
-				</div>
-			</div>
+<	<div class="row">
+<div class="col s2">
+ <%= render 'layouts/side_nav' %>
+</div>
+<div class="col s6">
+ <% flash.each do |message_type, message| %>
+ <div class="alert alert-<%= message_type %>"><%= message %></div>
+ <% end %>
+ <%= render 'shared/micropost_form' %>
+ <div class="row">
+  <div class="col s12">
+    ]<div class="add-microposts"></div>
+    <%= render 'shared/feed' %>
+  </div>
+</div>
 
-			<% else %>
-			<div class="row">
-				<div class="col s12" style="text-align:center;margin-top:5%">
-					New to Connector ?? 
-				</div>
-				<div class="col s12" style="text-align:center;margin-top:3%">
-					<%= link_to "Sign Up", signup_path , :class => 'btn', :style => ''%>
-				</div>
-			</div>
-			<% end %>
-			<% if logged_in? %>
-		</div>
-		<div class="col s2">
-		</div>		
-		<div id="chatbox" class="col s2">		
-			<%= render 'users/chat' %>
-		</div>
-	</div>
+<% else %>
+<div class="row">
+  <div class="col s12" style="text-align:center;margin-top:5%">
+    New to Connector ??
+  </div>
+  <div class="col s12" style="text-align:center;margin-top:3%">
+    <%= link_to "Sign Up", signup_path , :class => 'btn', :style => ''%>
+  </div>
+</div>
+<% end %>
+<% if logged_in? %>
+</div>
+<div class="col s2">
+</div>
+<div id="chatbox" class="col s2">
+ <%= render 'users/chat' %>
+</div>
+</div>
 </div>
 <% end %>
 <script type="text/javascript">
-	$(document).ready(function(){
+  $(document).ready(function(){
 
-		$(".dropdown").click(function(){
-			$('.dropdown-button').dropdown({
-				inDuration: 300,
-				outDuration: 225,
+    $(".dropdown").click(function(){
+      $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false, // Activate on hover
       gutter: 0, // Spacing from edge
       belowOrigin: true, // Displays dropdown below the button
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
-  }
-  );
+    }
+    );
 
-		});
-	});
+    });
+  });
 
 </script>
