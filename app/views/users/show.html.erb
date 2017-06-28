@@ -1,89 +1,89 @@
 <%= javascript_include_tag 'users.js'%>
 <div class="container-fluid">
-	<div class="row">
-		<div class="col s10" style="padding: 0">
-			<div class="row">
-				<div class="col s12" style="    padding: 0px 10px 0px 10px;">
-					<!--<%= image_tag 'back.jpg' ,:style=>'height:300px;width:100%'%>
-					 <div class="col s3" style="position: absolute;margin-top: -116px;">
-						<% if @user.picture? %>
-						<%= image_tag @user.picture.url ,:style =>'  width: 55%;min-height:160px'%>
-						<% else %>
-						<%= image_tag 'default-image.png' ,:style =>'  width: 55%;min-height:160px'%>		
-						<% end %>
-					</div> -->
-					<div class="profile_cover">
+  <div class="row">
+    <div class="col s10" style="padding: 0">
+     <div class="row">
+      <div class="col s12" style="padding: 0px 10px 0px 10px;">
+        <!--<%= image_tag 'back.jpg' ,:style=>'height:300px;width:100%'%>
+        <div class="col s3" style="position: absolute;margin-top: -116px;">
+        <% if @user.picture? %>
+        <%= image_tag @user.picture.url ,:style =>'width: 55%;min-height:160px'%>
+        <% else %>
+        <%= image_tag 'default-image.png' ,:style =>'width: 55%;min-height:160px'%>
+        <% end %>
+      </div> -->
+      <div class="profile_cover">
 
-					</div>
-					<div class="profile_info">
-						<left>
-							<% if @user.picture? %>
-							<%= image_tag @user.picture.url ,class: 'profile_pic'%>
-							<% else %>
-							<%= image_tag 'default-image.png' ,class: 'profile_pic'%>
-							<% end %>
-						</left>
-						<div class="profile_info_text">
-							<h2><%= @user.first_name %></h2><br/>
-							<h3>This is the description of this profile This is the description of this profile This is the description of this profile This is the description of this profile </h3><br/>
-							<a href="#">http://www.website.com</a><br/>
-						</div>
-						<div class="profile_menu_container">
-							<%= render 'follow_form' %>
-							<!-- <button class="profile_menu">Message</button> -->
-						</div>
-						<div class="profile_sub_menu">
-							<button class="posts active">Posts</button>
-							<button class="photos">Photos</button>
-							<button class="followers">Followers</button>
-							<button class="following">Following</button>
-							<button class="about">About</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row" style="padding-top:20px">
-				<div class="col s9">
-					<div class="profile_posts">
-						<%= render 'shared/micropost_form' %>
-						<% if @user.microposts.any? %>
-						<div id="ordered-microposts">
-							<%= render @microposts %>
-						</div>
-						<div id="infinite-scrolling">
-							<%= will_paginate @microposts %>
-						</div>
-						<button class="load-more btn">
-							Load more
-						</button>
-						<% end %>
-					</div>
-					<div class="profile_photos">
-						Photos
-					</div>
-					<div class="profile_followers">
-						<% if @followers.any? %>
-						<%= render 'users/followers' %>
-						<% else %>
-						No Followers
-						<% end %>
-					</div>
-					<div class="profile_following">
-						<% if @user.following.any? %>
-						<%= render 'users/following' %>
-						<% else %>
-						No following
-						<% end %>
-					</div>
-					<div class="profile_about">
-						About
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="chatbox" class="col s2">
-			<%= render 'users/chat' %>
-		</div>
-	</div>
+      </div>
+      <div class="profile_info">
+        <left>
+         <% if @user.picture? %>
+         <%= image_tag @user.picture.url ,class: 'profile_pic'%>
+         <% else %>
+         <%= image_tag 'default-image.png' ,class: 'profile_pic'%>
+         <% end %>
+       </left>
+       <div class="profile_info_text">
+        <h2><%= @user.first_name %></h2><br/>
+        <h3>This is the description of this profile This is the description of this profile This is the description of this profile This is the description of this profile </h3><br/>
+        <a href="#">http://www.website.com</a><br/>
+      </div>
+      <div class="profile_menu_container">
+       <%= render 'follow_form' %>
+       <!-- <button class="profile_menu">Message</button> -->
+     </div>
+     <div class="profile_sub_menu">
+      <button class="posts active">Posts</button>
+      <button class="photos">Photos</button>
+      <button class="followers">Followers</button>
+      <button class="following">Following</button>
+      <button class="about">About</button>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row" style="padding-top:20px">
+  <div class="col s9">
+    <div class="profile_posts">
+      <%= render 'shared/micropost_form' %>
+      <% if @user.microposts.any? %>
+      <div id="ordered-microposts">
+        <%= render @microposts %>
+      </div>
+      <div id="infinite-scrolling">
+        <%= will_paginate @microposts %>
+      </div>
+      <button class="load-more btn">
+       Load more
+     </button>
+     <% end %>
+   </div>
+   <div class="profile_photos">
+    Photos
+  </div>
+  <div class="profile_followers">
+    <% if @followers.any? %>
+    <%= render 'users/followers' %>
+    <% else %>
+    No Followers
+    <% end %>
+  </div>
+  <div class="profile_following">
+    <% if @user.following.any? %>
+    <%= render 'users/following' %>
+    <% else %>
+    No following
+    <% end %>
+  </div>
+  <div class="profile_about">
+    About
+  </div>
+</div>
+</div>
+</div>
+<div id="chatbox" class="col s2">
+ <%= render 'users/chat' %>
+</div>
+</div>
 </div>
 
